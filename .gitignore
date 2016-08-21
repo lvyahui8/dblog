@@ -4,6 +4,7 @@ Vagrantfile.local
 .idea/
 target
 *.log
+*.iml
 
 ### Java template
 *.class
