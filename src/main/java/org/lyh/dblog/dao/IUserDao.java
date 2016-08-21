@@ -2,6 +2,7 @@ package org.lyh.dblog.dao;
 
 import org.lyh.dblog.entity.User;
 
+import java.util.List;
 
 public interface IUserDao {
     int deleteByPrimaryKey(Integer id);
@@ -15,4 +16,7 @@ public interface IUserDao {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    List<User> all();
+
 }

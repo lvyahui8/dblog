@@ -6,6 +6,7 @@ import org.lyh.dblog.service.IUserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  *
@@ -15,9 +16,14 @@ import javax.annotation.Resource;
 public class UserService implements IUserService {
 
     @Resource
-    private IUserDao IUserDao;
+    private IUserDao userDao;
 
     public User getUserById(int userId) {
-        return this.IUserDao.selectByPrimaryKey(userId);
+        return this.userDao.selectByPrimaryKey(userId);
     }
+
+    public List<User> all() {
+        return this.userDao.all();
+    }
+
 }
