@@ -104,4 +104,17 @@
         updated_at = #{updatedAt,jdbcType=TIMESTAMP}
         WHERE id = #{id,jdbcType=INTEGER}
     </update>
+
+    <select id="select" resultMap="ResultMapWithBLOBs">
+        SELECT * FROM post
+        <if test="conditions.size != 0">
+            WHERE
+            <foreach collection="conditions" item="item" index="key" open="" separator="AND"
+                     close="">
+                ${key}=#{item}
+            </foreach>
+        </if>
+        ORDER BY #{orderFiled} #{sort}
+        LIMIT #{offset},#{size}
+    </select>
 </mapper>

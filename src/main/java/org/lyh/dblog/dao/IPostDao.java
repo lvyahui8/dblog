@@ -1,6 +1,10 @@
 package org.lyh.dblog.dao;
 
+import org.apache.ibatis.annotations.Param;
 import org.lyh.dblog.entity.Post;
+
+import java.util.List;
+import java.util.Map;
 
 public interface IPostDao {
     int deleteByPrimaryKey(Integer id);
@@ -16,4 +20,10 @@ public interface IPostDao {
     int updateByPrimaryKeyWithBLOBs(Post record);
 
     int updateByPrimaryKey(Post record);
+
+    List<Post> select(@Param("conditions") Map<String,Object> conditions,
+                      @Param("orderFiled") String orderFiled,
+                      @Param("sort") String sort,
+                      @Param("offset") Integer offset,
+                      @Param("size") Integer size);
 }
