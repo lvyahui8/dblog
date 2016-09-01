@@ -4,7 +4,7 @@
         "mybatis-generator-config_1_0.dtd">
 <!--"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">-->
 <generatorConfiguration>
-    <classPathEntry location="D:/library/mysql/mysql-connector-java-5.1.35-bin.jar"/>
+    <classPathEntry location="D:/java_library/mysql-connector-java-5.1.35-bin.jar"/>
 
     <context id="DB2Tables" targetRuntime="MyBatis3" >
 
@@ -47,7 +47,7 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
-        <table tableName="user" domainObjectName="User"
+        <table tableName="post" domainObjectName="Post"
                enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false"
