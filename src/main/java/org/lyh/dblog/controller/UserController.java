@@ -16,13 +16,14 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class UserController extends BaseController {
     @Resource
     private IUserService userService;
 
     @RequestMapping("/view")
     public String view(HttpServletRequest request, Model model){
         int userId = Integer.parseInt(request.getParameter("id"));
+        logger.info("view :  " + userId);
         User user = this.userService.getUserById(userId);
         model.addAttribute("user", user);
         return "user/view";

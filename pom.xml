@@ -165,6 +165,13 @@
             <artifactId>commons-codec</artifactId>
             <version>1.9</version>
         </dependency>
+
+        <!--1.0.2-->
+        <dependency>
+            <groupId>com.0opslab</groupId>
+            <artifactId>0opslab-utils</artifactId>
+            <version>1.0.2</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>dblog</finalName>
