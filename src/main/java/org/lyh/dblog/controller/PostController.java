@@ -1,5 +1,6 @@
 package org.lyh.dblog.controller;
 
+import org.lyh.dblog.bean.ResultBody;
 import org.lyh.dblog.entity.Post;
 import org.lyh.dblog.service.IPostService;
 import org.springframework.stereotype.Controller;
@@ -46,4 +47,12 @@ public class PostController extends BaseController {
         return makeData(0,data);
     }
 
+    @RequestMapping(value = "/view",method = RequestMethod.GET)
+    @ResponseBody
+    public ResultBody view(@RequestParam  Integer id){
+        ResultBody resp = new ResultBody();
+        resp.setCode(0);
+        resp.getData().put("post",postService.find(id));
+        return resp;
+    }
 }

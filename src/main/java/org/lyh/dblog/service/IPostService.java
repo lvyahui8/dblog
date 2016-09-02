@@ -10,5 +10,8 @@ import java.util.Map;
  */
 public interface IPostService {
     boolean save(Post post);
+
     List<Post> select(Map<String,Object> conditions, String orderFiled, String sort, Integer offset, Integer size);
+
+    Post find(Integer id);
 }

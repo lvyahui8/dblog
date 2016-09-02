@@ -29,4 +29,8 @@ public class PostService implements IPostService {
     public List<Post> select(Map<String, Object> conditions, String orderFiled, String sort, Integer offset, Integer size) {
         return postDao.select(conditions,orderFiled,sort,offset,size);
     }
+
+    public Post find(Integer id) {
+        return postDao.selectByPrimaryKey(id);
+    }
 }
