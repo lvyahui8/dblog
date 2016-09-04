@@ -5,7 +5,9 @@ import org.lyh.dblog.entity.BaseEntity;
 import java.util.List;
 
 /**
+ *
  * @author samlv
+ * @since  2016-09-02
  */
 @SuppressWarnings("unused")
 public class PageBean<T extends BaseEntity> {

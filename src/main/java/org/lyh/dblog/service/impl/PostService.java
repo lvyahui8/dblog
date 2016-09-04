@@ -4,6 +4,8 @@ import org.lyh.dblog.dao.ICategoryDao;
 import org.lyh.dblog.dao.IPostDao;
 import org.lyh.dblog.entity.Post;
 import org.lyh.dblog.service.IPostService;
+import org.lyh.dblog.task.Task;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -22,6 +24,9 @@ public class PostService implements IPostService {
     @Resource
     private ICategoryDao categoryDao;
 
+    @Resource(name = "taskManager")
+    private TaskExecutor taskManager;
+
     public boolean save(Post post) {
         return post.getId() == null ? postDao.insert(post) > 0 : postDao.updateByPrimaryKey(post) > 0;
     }
@@ -32,5 +37,20 @@ public class PostService implements IPostService {
 
     public Post find(Integer id) {
         return postDao.selectByPrimaryKey(id);
+    }
+
+    public void pullCnblogs(final Integer cnblogId){
+        Task task = new Task(cnblogId) {
+            @Override
+            public void job() {
+                try {
+                    Thread.sleep(10000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(cnblogId);
+            }
+        };
+        taskManager.execute(task);
     }
 }

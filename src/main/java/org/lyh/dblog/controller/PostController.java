@@ -55,4 +55,12 @@ public class PostController extends BaseController {
         resp.getData().put("post",postService.find(id));
         return resp;
     }
+
+    @RequestMapping("/pull")
+    @ResponseBody
+    public ResultBody pull(@RequestParam  Integer cnblogId){
+        ResultBody resp = new ResultBody();
+        postService.pullCnblogs(cnblogId);
+        return resp;
+    }
 }
