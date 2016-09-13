@@ -1,4 +1,4 @@
-package org.lyh.dblog.bean;
+package org.lyh.common.bean;
 
 import org.lyh.dblog.entity.BaseEntity;
 

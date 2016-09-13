@@ -1,6 +1,7 @@
 package org.lyh.dblog.controller;
 
-import org.lyh.dblog.bean.ResultBody;
+
+import org.lyh.common.bean.ResultBody;
 import org.lyh.dblog.entity.Post;
 import org.lyh.dblog.service.IPostService;
 import org.springframework.stereotype.Controller;
