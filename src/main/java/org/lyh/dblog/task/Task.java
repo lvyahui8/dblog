@@ -16,15 +16,16 @@ public abstract class Task implements Runnable{
     TaskManager manager ;
 
     public void run() {
-        job();
-        if(this.manager != null){
-            this.manager.remove(this);
+        try{
+            job();
+        }finally {
+            if(this.manager != null){
+                this.manager.remove(this);
+            }
         }
     }
 
-    public void job(){
-
-    }
+    public abstract void job();
 
     public void setManager(TaskManager manager) {
         this.manager = manager;
