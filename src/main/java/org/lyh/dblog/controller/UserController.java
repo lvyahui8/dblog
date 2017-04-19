@@ -24,7 +24,7 @@ public class UserController extends BaseController {
     public String view(HttpServletRequest request, Model model){
         int userId = Integer.parseInt(request.getParameter("id"));
         logger.info("view :  " + userId);
-        User user = this.userService.getUserById(userId);
+        User user = this.userService.find(userId);
         model.addAttribute("user", user);
         return "user/view";
     }
