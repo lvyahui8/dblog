@@ -40,7 +40,8 @@ public class PageBean<T extends BaseEntity> {
             } else {
                 start = currentPage - (maxBtnCount - 1) / 2;
             }
-            end = maxBtnCount - 1 + start > totalPage ? totalPage : maxBtnCount - 1 + start;
+            end = maxBtnCount - 1 + start > totalPage
+                    ? totalPage : maxBtnCount - 1 + start;
         } else {
             end = totalPage;
         }
