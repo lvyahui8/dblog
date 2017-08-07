@@ -46,7 +46,7 @@ CREATE TABLE `user` (
   UNIQUE KEY `username_UNIQUE` (`username`),
   KEY `FK_a4bhkx01s72ifnp31kr6a3220` (`college_id`),
   CONSTRAINT `FK_a4bhkx01s72ifnp31kr6a3220` FOREIGN KEY (`college_id`) REFERENCES `college` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
