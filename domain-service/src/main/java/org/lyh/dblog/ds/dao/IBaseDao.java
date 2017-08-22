@@ -1,8 +1,8 @@
-package org.lyh.dblog.dao;
+package org.lyh.dblog.ds.dao;
 
 import org.apache.ibatis.annotations.Param;
-import org.lyh.common.bean.Condition;
-import org.lyh.dblog.entity.BaseEntity;
+import org.lyh.dblog.domain.BaseEntity;
+import org.lyh.dblog.ds.bean.Condition;
 
 import java.util.List;
 

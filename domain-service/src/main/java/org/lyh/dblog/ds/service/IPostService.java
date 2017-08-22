@@ -1,6 +1,7 @@
 package org.lyh.dblog.ds.service;
 
-import org.lyh.dblog.entity.Post;
+
+import org.lyh.dblog.domain.Post;
 
 /**
  * @author samlv

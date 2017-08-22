@@ -1,4 +1,4 @@
-package org.lyh.common.bean;
+package org.lyh.dblog.ds.bean;
 
 /**
  * @author lvyahui (lvyahui8@gmail.com,lvyahui8@126.com)

@@ -1,14 +1,13 @@
-package org.lyh.dblog.service.impl;
+package org.lyh.dblog.ds.service;
 
-import org.lyh.dblog.dao.ICategoryDao;
-import org.lyh.dblog.dao.IPostDao;
-import org.lyh.dblog.entity.Post;
-import org.lyh.dblog.service.IPostService;
-import org.lyh.dblog.task.Task;
-import org.springframework.core.task.TaskExecutor;
+import org.lyh.dblog.domain.Post;
+import org.lyh.dblog.ds.bean.Condition;
+import org.lyh.dblog.ds.dao.ICategoryDao;
+import org.lyh.dblog.ds.dao.IPostDao;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -43,20 +42,7 @@ public class PostService implements IPostService {
         return postDao.selectByPrimaryKey(id);
     }
 
-    public void pullCnblogs(final Integer cnblogId){
-        Task task = new Task(cnblogId) {
-            @Override
-            public void job() {
-                try {
-                    Thread.sleep(10000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                System.out.println(cnblogId);
-            }
-        };
-        taskManager.execute(task);
-    }
+
     public List<Post> all() {
         return null;
     }

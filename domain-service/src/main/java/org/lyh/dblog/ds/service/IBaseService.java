@@ -1,6 +1,7 @@
-package org.lyh.dblog.service;
+package org.lyh.dblog.ds.service;
 
-import org.lyh.dblog.entity.BaseEntity;
+
+import org.lyh.dblog.domain.BaseEntity;
 
 import java.util.List;
 import java.util.Map;
