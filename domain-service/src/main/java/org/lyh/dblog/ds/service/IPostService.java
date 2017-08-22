@@ -1,20 +1,10 @@
 package org.lyh.dblog.ds.service;
 
-
-import org.lyh.dblog.domain.Post;
-
-import java.util.List;
-import java.util.Map;
+import org.lyh.dblog.entity.Post;
 
 /**
  * @author samlv
  */
-public interface IPostService {
-    boolean save(Post post);
+public interface IPostService extends IBaseService<Post> {
 
-    List<Post> select(Map<String, Object> conditions, String orderFiled, String sort, Integer offset, Integer size);
-
-    Post find(Integer id);
-
-    void pullCnblogs(final Integer cnblogId);
 }

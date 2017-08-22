@@ -61,7 +61,7 @@ public class PostController extends BaseController {
     @ResponseBody
     public ResultBody pull(@RequestParam  Integer cnblogId){
         ResultBody resp = new ResultBody();
-        postService.pullCnblogs(cnblogId);
+//        postService.pullCnblogs(cnblogId);
         return resp;
     }
 }

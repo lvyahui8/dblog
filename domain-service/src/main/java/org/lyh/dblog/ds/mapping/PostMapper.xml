@@ -109,12 +109,12 @@
         SELECT * FROM post
         <if test="conditions.size != 0">
             WHERE
-            <foreach collection="conditions" item="item" index="key" open="" separator="AND"
+            <foreach collection="conditions" item="item" open="" separator="AND"
                      close="">
-                ${key}=#{item}
+                ${item.key} ${item.opt} #{item.value}
             </foreach>
         </if>
-        ORDER BY #{orderFiled} #{sort}
+        ORDER BY #{orderField} #{sort}
         LIMIT #{offset},#{size}
     </select>
 </mapper>
