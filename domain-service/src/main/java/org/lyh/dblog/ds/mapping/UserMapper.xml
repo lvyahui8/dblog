@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lyh.dblog.ds.dao.IUserDao">
+    <resultMap id="BaseResultMap" type="org.lyh.dblog.domain.User">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="salt" property="salt" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="gold" property="gold" jdbcType="INTEGER"/>
+        <result column="progress" property="progress" jdbcType="INTEGER"/>
+        <result column="created_at" property="createdAt" jdbcType="TIMESTAMP"/>
+        <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="phone" property="phone" jdbcType="VARCHAR"/>
+        <result column="code" property="code" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="CHAR"/>
+        <result column="avatar" property="avatar" jdbcType="VARCHAR"/>
+        <result column="clazz" property="clazz" jdbcType="VARCHAR"/>
+        <result column="label" property="label" jdbcType="VARCHAR"/>
+        <result column="college_id" property="collegeId" jdbcType="INTEGER"/>
+        <result column="remember_token" property="rememberToken" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, username, password, salt, name, gold, progress, created_at, updated_at, email, 
+    phone, code, type, avatar, clazz, label, college_id, remember_token
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="org.lyh.dblog.domain.User">
+    insert into user (id, username, password, 
+      salt, name, gold, progress, 
+      created_at, updated_at, email, 
+      phone, code, type, avatar, 
+      clazz, label, college_id, 
+      remember_token)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{salt,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{gold,jdbcType=INTEGER}, #{progress,jdbcType=INTEGER}, 
+      #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}, #{email,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{type,jdbcType=CHAR}, #{avatar,jdbcType=VARCHAR}, 
+      #{clazz,jdbcType=VARCHAR}, #{label,jdbcType=VARCHAR}, #{collegeId,jdbcType=INTEGER}, 
+      #{rememberToken,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="org.lyh.dblog.domain.User">
+        insert into user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="salt != null">
+                salt,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="gold != null">
+                gold,
+            </if>
+            <if test="progress != null">
+                progress,
+            </if>
+            <if test="createdAt != null">
+                created_at,
+            </if>
+            <if test="updatedAt != null">
+                updated_at,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="code != null">
+                code,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="avatar != null">
+                avatar,
+            </if>
+            <if test="clazz != null">
+                clazz,
+            </if>
+            <if test="label != null">
+                label,
+            </if>
+            <if test="collegeId != null">
+                college_id,
+            </if>
+            <if test="rememberToken != null">
+                remember_token,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="salt != null">
+                #{salt,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="gold != null">
+                #{gold,jdbcType=INTEGER},
+            </if>
+            <if test="progress != null">
+                #{progress,jdbcType=INTEGER},
+            </if>
+            <if test="createdAt != null">
+                #{createdAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedAt != null">
+                #{updatedAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                #{type,jdbcType=CHAR},
+            </if>
+            <if test="avatar != null">
+                #{avatar,jdbcType=VARCHAR},
+            </if>
+            <if test="clazz != null">
+                #{clazz,jdbcType=VARCHAR},
+            </if>
+            <if test="label != null">
+                #{label,jdbcType=VARCHAR},
+            </if>
+            <if test="collegeId != null">
+                #{collegeId,jdbcType=INTEGER},
+            </if>
+            <if test="rememberToken != null">
+                #{rememberToken,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="org.lyh.dblog.domain.User">
+        update user
+        <set>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="salt != null">
+                salt = #{salt,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="gold != null">
+                gold = #{gold,jdbcType=INTEGER},
+            </if>
+            <if test="progress != null">
+                progress = #{progress,jdbcType=INTEGER},
+            </if>
+            <if test="createdAt != null">
+                created_at = #{createdAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedAt != null">
+                updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="code != null">
+                code = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=CHAR},
+            </if>
+            <if test="avatar != null">
+                avatar = #{avatar,jdbcType=VARCHAR},
+            </if>
+            <if test="clazz != null">
+                clazz = #{clazz,jdbcType=VARCHAR},
+            </if>
+            <if test="label != null">
+                label = #{label,jdbcType=VARCHAR},
+            </if>
+            <if test="collegeId != null">
+                college_id = #{collegeId,jdbcType=INTEGER},
+            </if>
+            <if test="rememberToken != null">
+                remember_token = #{rememberToken,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.lyh.dblog.domain.User">
+    update user
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      gold = #{gold,jdbcType=INTEGER},
+      progress = #{progress,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      email = #{email,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      type = #{type,jdbcType=CHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      clazz = #{clazz,jdbcType=VARCHAR},
+      label = #{label,jdbcType=VARCHAR},
+      college_id = #{collegeId,jdbcType=INTEGER},
+      remember_token = #{rememberToken,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+    <select id="all"  resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+      SELECT * FROM user;
+    </select>
+</mapper>
