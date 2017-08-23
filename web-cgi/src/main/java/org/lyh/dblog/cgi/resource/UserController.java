@@ -1,38 +1,40 @@
 package org.lyh.dblog.cgi.resource;
 
 import org.lyh.dblog.domain.User;
-import org.lyh.dblog.ds.service.IUserService;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.lyh.dblog.ds.service.UserService;
+import org.lyh.dblog.msg.MsgCode;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import java.util.List;
 
 /**
  *
  * Created by lvyahui on 2016/8/21.
  */
-@Controller
-@RequestMapping("/user")
+@Path("/user")
 public class UserController extends BaseController {
-    @Resource
-    private IUserService userService;
 
-    @RequestMapping("/view")
-    public String view(HttpServletRequest request, Model model){
-        int userId = Integer.parseInt(request.getParameter("id"));
+    @Autowired
+    private UserService userService;
+
+    @GET
+    @Path("/view")
+    @Produces("application/json")
+    public Object view(@QueryParam("id") @NotNull(message = MsgCode.C_PARAM) Integer userId){
         logger.info("view :  " + userId);
-        User user = this.userService.find(userId);
-        model.addAttribute("user", user);
-        return "user/view";
+        return this.userService.find(userId);
     }
 
-    @RequestMapping("/list")
-    public String list(HttpServletRequest request,Model model){
+    @GET
+    @Path("/list")
+    @Produces("application/json")
+    public Object list(){
         List<User> users = this.userService.all();
-        model.addAttribute("users",users);
-        return "user/list";
+        return users;
     }
 }

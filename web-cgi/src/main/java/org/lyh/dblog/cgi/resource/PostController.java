@@ -3,28 +3,29 @@ package org.lyh.dblog.cgi.resource;
 
 import org.lyh.dblog.cgi.bean.ResultBody;
 import org.lyh.dblog.domain.Post;
-import org.lyh.dblog.ds.service.IPostService;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.lyh.dblog.ds.service.PostService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * @author samlv
  */
-@Controller
-@RequestMapping("/post")
+@Path("/post")
 public class PostController extends BaseController {
 
-    @Resource
-    private IPostService postService;
+    @Autowired
+    private PostService postService;
 
-    @RequestMapping(value = "/save",method = RequestMethod.POST)
+    @POST
+    @Path("/save")
+    @Consumes("application/json")
+    @Produces("application/json")
     public @ResponseBody Map<String,Object> save(Post post){
         Map<String,Object> data = new HashMap<String, Object>();
         int ret = 0;
@@ -41,15 +42,18 @@ public class PostController extends BaseController {
      * @param conditions 输入条件
      * @return json数据
      */
-    @RequestMapping(value = "/list",method = RequestMethod.GET)
+    @GET
+    @Path("/list")
+    @Produces(MediaType.APPLICATION_JSON)
     public @ResponseBody Map<String,Object> list(@RequestParam  Map<String,Object> conditions){
         Map<String,Object> data = new HashMap<String, Object>();
         data.put("posts",postService.select(conditions,"id","desc",0,3));
         return makeData(0,data);
     }
 
-    @RequestMapping(value = "/view",method = RequestMethod.GET)
-    @ResponseBody
+    @GET
+    @Path("/view")
+    @Produces(MediaType.APPLICATION_JSON)
     public ResultBody view(@RequestParam  Integer id){
         ResultBody resp = new ResultBody();
         resp.setCode(0);
@@ -57,11 +61,4 @@ public class PostController extends BaseController {
         return resp;
     }
 
-    @RequestMapping("/pull")
-    @ResponseBody
-    public ResultBody pull(@RequestParam  Integer cnblogId){
-        ResultBody resp = new ResultBody();
-//        postService.pullCnblogs(cnblogId);
-        return resp;
-    }
 }

@@ -1,7 +1,6 @@
 package org.lyh.dblog.cgi.resource;
 
 import org.lyh.dblog.cgi.bean.ResultBody;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,9 +15,10 @@ import java.io.IOException;
  * @author lvyahui
  * @since 2016/9/13 14:23.
  */
-@Controller
-@RequestMapping("/upload")
+
+
 public class UploadController {
+
     @RequestMapping(value = "/file",method = RequestMethod.POST)
     @ResponseBody
     public ResultBody file(@RequestParam("file") MultipartFile file, HttpServletRequest request){

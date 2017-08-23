@@ -31,7 +31,7 @@ public class UserService implements IUserService {
     }
 
     public User find(Integer id) {
-        return null;
+        return userDao.selectByPrimaryKey(id);
     }
 
     public List<User> all() {
