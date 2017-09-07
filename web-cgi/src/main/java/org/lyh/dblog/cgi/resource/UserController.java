@@ -4,6 +4,7 @@ import org.lyh.dblog.domain.User;
 import org.lyh.dblog.ds.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  *
  * Created by lvyahui on 2016/8/21.
  */
+@RestController
 @RequestMapping("/user")
 public class UserController extends BaseController {
 
