@@ -9,6 +9,7 @@ import java.util.List;
 /**
  * @author samlv
  */
+
 public interface IBaseDao<T extends BaseEntity> {
     int deleteByPrimaryKey(Integer id);
 

@@ -6,7 +6,7 @@ import org.lyh.dblog.msg.MsgCode;
  * @author lvyahui (lvyahui8@gmail.com,lvyahui8@126.com)
  * @since 2017/8/23 21:33
  */
-public class SystemResponse {
+public class StandardResponse {
     private String code;
     private String msg;
     private Object data;

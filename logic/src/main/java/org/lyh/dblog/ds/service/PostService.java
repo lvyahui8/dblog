@@ -5,6 +5,7 @@ import org.lyh.dblog.ds.bean.Condition;
 import org.lyh.dblog.ds.dao.ICategoryDao;
 import org.lyh.dblog.ds.dao.IPostDao;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class PostService implements IPostService {
     private ICategoryDao categoryDao;
 
 
+    @Transactional
     public boolean save(Post post) {
         return post.getId() == null ? postDao.insert(post) > 0 : postDao.updateByPrimaryKey(post) > 0;
     }

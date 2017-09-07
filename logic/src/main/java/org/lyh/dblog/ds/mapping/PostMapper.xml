@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.lyh.dblog.ds.dao.IPostDao">
     <resultMap id="BaseResultMap" type="org.lyh.dblog.domain.Post">
         <id column="id" property="id" jdbcType="INTEGER"/>
@@ -16,26 +17,27 @@
     <sql id="Blob_Column_List">
         content
     </sql>
-    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs"
+            parameterType="java.lang.Integer">
         select
         <include refid="Base_Column_List"/>
         ,
         <include refid="Blob_Column_List"/>
-        from post
+        from m_post
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        DELETE FROM post
+        DELETE FROM m_post
         WHERE id = #{id,jdbcType=INTEGER}
     </delete>
     <insert id="insert" parameterType="org.lyh.dblog.domain.Post">
-        INSERT INTO post (id, title, created_at,
+        INSERT INTO m_post (id, title, created_at,
                           updated_at, content)
         VALUES (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP},
         #{updatedAt,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR})
     </insert>
     <insert id="insertSelective" parameterType="org.lyh.dblog.domain.Post">
-        insert into post
+        insert into m_post
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 id,
@@ -72,7 +74,7 @@
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="org.lyh.dblog.domain.Post">
-        update post
+        update m_post
         <set>
             <if test="title != null">
                 title = #{title,jdbcType=VARCHAR},
@@ -90,7 +92,7 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.lyh.dblog.domain.Post">
-        UPDATE post
+        UPDATE m_post
         SET title = #{title,jdbcType=VARCHAR},
         created_at = #{createdAt,jdbcType=TIMESTAMP},
         updated_at = #{updatedAt,jdbcType=TIMESTAMP},
@@ -98,7 +100,7 @@
         WHERE id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="org.lyh.dblog.domain.Post">
-        UPDATE post
+        UPDATE m_post
         SET title = #{title,jdbcType=VARCHAR},
         created_at = #{createdAt,jdbcType=TIMESTAMP},
         updated_at = #{updatedAt,jdbcType=TIMESTAMP}
@@ -106,7 +108,7 @@
     </update>
 
     <select id="select" resultMap="ResultMapWithBLOBs">
-        SELECT * FROM post
+        SELECT * FROM m_post
         <if test="conditions.size != 0">
             WHERE
             <foreach collection="conditions" item="item" open="" separator="AND"

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.lyh.dblog.ds.dao.ICategoryDao">
     <resultMap id="BaseResultMap" type="org.lyh.dblog.domain.Category">
         <id column="id" property="id" jdbcType="INTEGER"/>
@@ -11,19 +12,19 @@
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
         <include refid="Base_Column_List"/>
-        from category
+        from m_category
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        DELETE FROM category
+        DELETE FROM m_category
         WHERE id = #{id,jdbcType=INTEGER}
     </delete>
     <insert id="insert" parameterType="org.lyh.dblog.domain.Category">
-        INSERT INTO category (id, name)
+        INSERT INTO m_category (id, name)
         VALUES (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
     </insert>
     <insert id="insertSelective" parameterType="org.lyh.dblog.domain.Category">
-        insert into category
+        insert into m_category
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 id,
@@ -42,7 +43,7 @@
         </trim>
     </insert>
     <update id="updateByPrimaryKeySelective" parameterType="org.lyh.dblog.domain.Category">
-        update category
+        update m_category
         <set>
             <if test="name != null">
                 name = #{name,jdbcType=VARCHAR},
@@ -50,9 +51,11 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
+
     <update id="updateByPrimaryKey" parameterType="org.lyh.dblog.domain.Category">
-        UPDATE category
+        UPDATE m_category
         SET name = #{name,jdbcType=VARCHAR}
         WHERE id = #{id,jdbcType=INTEGER}
     </update>
+
 </mapper>
