@@ -25,9 +25,8 @@ public class PostController extends BaseController {
     @RequestMapping(value = "/save",method = RequestMethod.POST)
     public Map<String,Object> save(Post post){
         Map<String,Object> data = new HashMap<String, Object>();
-        int ret = 0;
         if(!postService.save(post)){
-            ret = 1;
+
         }
         return data;
     }
