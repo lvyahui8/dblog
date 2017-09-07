@@ -9,7 +9,7 @@
     <modules>
         <module>web-cgi</module>
         <module>domain</module>
-        <module>domain-service</module>
+        <module>logic</module>
         <module>common</module>
         <module>scheduled</module>
     </modules>
@@ -24,6 +24,7 @@
         <!-- log4j日志文件管理包版本 -->
         <slf4j.version>1.7.7</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
+        <spring.boot.version>1.5.6.RELEASE</spring.boot.version>
         <skipTests>true</skipTests>
         <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
